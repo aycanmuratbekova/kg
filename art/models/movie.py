@@ -9,7 +9,7 @@ class Movie(models.Model):
     year = models.PositiveIntegerField(verbose_name="Год выпуска")
     genre = models.CharField(max_length=255, verbose_name="Жанр")
     pg_rating = models.PositiveIntegerField(default=0, verbose_name="Возрастное ограничение")
-    description = models.TextField(verbose_name="Описание фильма")
+    description = models.TextField(verbose_name="Описание фильма", max_length=400, help_text="Максимально 400 символов")
     type = models.CharField(max_length=255, verbose_name="Тип фильма")
     kind = models.CharField(max_length=255, verbose_name="Вид фильма")
     footage = models.CharField(max_length=255, verbose_name="Метраж")
@@ -28,7 +28,7 @@ class Movie(models.Model):
 
 class PersonInMovie(models.Model):
     movie = models.ForeignKey(to=Movie, on_delete=models.SET_NULL, null=True, blank=True, related_name='persons')
-    person = models.ForeignKey(to=Person, on_delete=models.SET_NULL, null=True, blank=True)
+    person = models.ForeignKey(to=Person, on_delete=models.SET_NULL, null=True, blank=True, related_name='movies')
     profession = models.IntegerField(default=5, choices=PROFESSIONS)
 
     def __str__(self):
