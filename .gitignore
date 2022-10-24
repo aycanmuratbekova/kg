@@ -2,7 +2,7 @@
 .idea/
 media/
 static/
-
+production.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
