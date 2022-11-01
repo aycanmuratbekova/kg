@@ -13,5 +13,6 @@ class PiMAdmin(admin.StackedInline):
 class MovieAdmin(admin.ModelAdmin):
     # model = Movie
     inlines = [PiMAdmin]
+    list_display = ['name', 'year', 'genre']
 
 
