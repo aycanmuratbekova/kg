@@ -2,7 +2,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.filters import SearchFilter
 from .models import Movie, Person
-from .serializers import MovieSerializer, PersonSerializer
+from .serializers import *
 from .filters import MovieFilter
 
 
@@ -23,3 +23,8 @@ class PersonViewSet(ModelViewSet):
         "profession", "bio"
     ]
     search_fields = ['first_name', 'second_name']
+
+
+class CompilationViewSet(ModelViewSet):
+    queryset = Compilation.objects.all()
+    serializer_class = CompilationSerializer
