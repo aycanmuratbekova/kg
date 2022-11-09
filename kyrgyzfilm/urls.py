@@ -22,6 +22,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from news.views import NewsViewSet
 from studioservices.views import PropsViewSet, PropsCategeroyViewSet
+from locations.views import LocationViewSet
 
 
 schema_view = get_schema_view(
@@ -41,6 +42,7 @@ router = routers.DefaultRouter()
 router.register(r'news', NewsViewSet)
 router.register(r'props-category', PropsCategeroyViewSet)
 router.register(r'props', PropsViewSet)
+router.register(r'locations', LocationViewSet)
 
 
 urlpatterns = [
