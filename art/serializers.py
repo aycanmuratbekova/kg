@@ -78,6 +78,7 @@ class MovieSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'name',
+            'url_name',
             'duration',
             'year',
             'genre',
