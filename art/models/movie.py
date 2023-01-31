@@ -5,7 +5,7 @@ from .profession import PROFESSIONS
 
 class Movie(models.Model):
     name = models.CharField(max_length=255, verbose_name='Название фильма')
-    url_name = models.CharField(max_length=255, verbose_name='Название фильма латиница', unique=True, default=' ')
+    url_name = models.CharField(max_length=255, verbose_name='Название фильма латиница', unique=True, null=True, blank=True)
     duration = models.DurationField(verbose_name='Длительность')
     year = models.PositiveIntegerField(verbose_name="Год выпуска")
     genre = models.CharField(max_length=255, verbose_name="Жанр")
