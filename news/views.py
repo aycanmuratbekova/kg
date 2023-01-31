@@ -10,11 +10,6 @@ class NewsViewSet(ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
 
-
-class NewsModelViewSet(ModelViewSet):
-    queryset = News.objects.all()
-    serializer_class = NewsSerializer
-
     def list(self, request):
         queryset = self.get_queryset()
         serializer = NewsSerializer(queryset, many=True)
