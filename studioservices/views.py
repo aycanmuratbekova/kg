@@ -16,3 +16,8 @@ class PropsViewSet(ModelViewSet):
 class ServiceViewSet(ModelViewSet):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
+
+
+class ServiceCategoryViewSet(ModelViewSet):
+    queryset = ServiceCategory.objects.all()
+    serializer_class = ServiceCategorySerializer

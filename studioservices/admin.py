@@ -4,6 +4,7 @@ from .models import *
 
 admin.site.register(PropsCategory)
 admin.site.register(Props)
+admin.site.register(ServiceCategory)
 
 
 class ServiceImageAdmin(admin.StackedInline):

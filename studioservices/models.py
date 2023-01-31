@@ -8,8 +8,8 @@ class PropsCategory(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "Категория услуг и реквизитов"
-        verbose_name_plural = "Категории услуг и реквизитов"
+        verbose_name = "Категория реквизитов"
+        verbose_name_plural = "Категории реквизитов"
 
 
 class Props(models.Model):
@@ -25,8 +25,19 @@ class Props(models.Model):
         verbose_name_plural = "Реквизиты"
 
 
+class ServiceCategory(models.Model):
+    name = models.CharField(max_length=255, verbose_name="Название категории")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Категория услуг"
+        verbose_name_plural = "Категории услуг"
+
+
 class Service(models.Model):
-    category = models.ForeignKey(PropsCategory, models.SET_NULL, 'services', null=True, blank=True, verbose_name="категория услуг")
+    category = models.ForeignKey(ServiceCategory, models.SET_NULL, 'services', null=True, blank=True, verbose_name="категория услуг")
     name = models.CharField(max_length=255, verbose_name="Название услуги")
 
     def __str__(self):
