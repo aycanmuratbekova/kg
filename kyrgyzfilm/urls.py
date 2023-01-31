@@ -38,7 +38,7 @@ urlpatterns = [
     path('core/', include("core.urls")),
     path('', include("art.urls")),
     path('', include(router.urls)),
-    path('contact/', include("contact_form.urls")),
+    path('', include("contact_form.urls")),
 
 ]
 

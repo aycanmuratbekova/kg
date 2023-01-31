@@ -19,7 +19,7 @@ class ServiceAdmin(admin.ModelAdmin):
         model = Service
 
 
-admin.site.register(ServiceImage)
+# admin.site.register(ServiceImage)
 admin.site.register(Service, ServiceAdmin)
 
 

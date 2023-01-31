@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import ContactAPIView
+from .views import ContactAPIView, OrderServiceAPIView
 
 urlpatterns = [
-    path('', ContactAPIView.as_view()),
+    path('contact/', ContactAPIView.as_view()),
+    path('order-service/', OrderServiceAPIView.as_view()),
 ]
