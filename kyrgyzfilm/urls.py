@@ -35,9 +35,10 @@ router.register(r'service', ServiceViewSet)
 urlpatterns = [
     path('swagger/', schema_view.with_ui()),
     path('admin/', admin.site.urls),
+    path('core/', include("core.urls")),
     path('', include("art.urls")),
     path('', include(router.urls)),
-    path('core/', include("core.urls")),
+    path('contact/', include("contact_form.urls")),
 
 ]
 
