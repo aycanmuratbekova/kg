@@ -3,6 +3,7 @@ from django.db import models
 
 class Location(models.Model):
     name = models.CharField(max_length=255, verbose_name="Название")
+    url_name = models.CharField(max_length=255, verbose_name="Название латиница")
     location = models.CharField(max_length=255, verbose_name="Местоположение")
     photo = models.ImageField(upload_to="locations", verbose_name="Фото")
 

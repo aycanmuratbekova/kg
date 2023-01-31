@@ -4,6 +4,7 @@ from .movie import Movie
 
 class Compilation(models.Model):
     name = models.CharField(max_length=255, verbose_name="Название подборки")
+    url_name = models.CharField(max_length=255, verbose_name="Название подборки латиница")
 
     def __str__(self):
         return self.name
