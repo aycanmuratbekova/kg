@@ -10,14 +10,14 @@ from .models import *
 
 class MovieListForCompilationSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(source='movie.id')
-    movie = serializers.StringRelatedField(many=False)
+    name = serializers.StringRelatedField(many=False)
     year = serializers.IntegerField(source="movie.year")
     poster = serializers.ImageField(source="movie.poster")
     genre = serializers.CharField(source='movie.genre')
 
     class Meta:
         model = MovieInCompilation
-        fields = ["id", "movie", 'year', 'genre', 'poster']
+        fields = ["id", "name", 'year', 'genre', 'poster']
 
 
 class CompilationSerializer(serializers.ModelSerializer):
