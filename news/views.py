@@ -10,11 +10,11 @@ class NewsViewSet(ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
 
-    # def list(self, request):
-    #     queryset = self.get_queryset()
-    #     serializer = NewsSerializer(queryset, many=True)
-    #
-    #     for data in serializer.data:
-    #         data['day_month'], data['year'] = get_ru_date(data['news_date'])
-    #
-    #     return Response({'count': len(queryset), 'results': serializer.data})
+    def list(self, request):
+        queryset = self.get_queryset()
+        serializer = NewsSerializer(queryset, many=True, context={'request': request})
+
+        for data in serializer.data:
+            data['day_month'], data['year'] = get_ru_date(data['news_date'])
+
+        return Response({'count': len(queryset), 'results': serializer.data})
