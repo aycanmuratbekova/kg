@@ -1,7 +1,9 @@
+from decouple import config
+
 from .base import *
 
 
-SECRET_KEY = 'django-insecure-&i=43ubtzl$hb278p$o)#!r2gbyy8amk39p_hikv9w2ghi$$$x'
+SECRET_KEY = config("SECRET_KEY_PRO")
 
 DATABASES = {
     'default': {
