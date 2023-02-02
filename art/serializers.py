@@ -10,7 +10,7 @@ from .models import *
 
 class MovieListForCompilationSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(source='movie.id')
-    name = serializers.StringRelatedField(many=False)
+    name = serializers.StringRelatedField(source="movie.name")
     year = serializers.IntegerField(source="movie.year")
     poster = serializers.ImageField(source="movie.poster")
     genre = serializers.CharField(source='movie.genre')
