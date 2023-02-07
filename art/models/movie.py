@@ -8,7 +8,7 @@ class Movie(models.Model):
     url_name = models.CharField(max_length=255, verbose_name='Название фильма латиница', null=True, blank=True)
     duration = models.DurationField(verbose_name='Длительность')
     year = models.PositiveIntegerField(verbose_name="Год выпуска")
-    rating = models.DecimalField(verbose_name="Рейтинг", max_digits=1, decimal_places=1)
+    rating = models.DecimalField(verbose_name="Рейтинг", max_digits=2, decimal_places=1)
     genre = models.CharField(max_length=255, verbose_name="Жанр")
     pg_rating = models.PositiveIntegerField(default=0, verbose_name="Возрастное ограничение")
     description = models.TextField(verbose_name="Описание фильма", max_length=400, help_text="Максимально 400 символов")
