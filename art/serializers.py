@@ -48,6 +48,7 @@ class PersonSerializer(serializers.ModelSerializer):
             "id",
             "first_name",
             "second_name",
+            "age",
             "profession",
             "bio",
             "photo",
