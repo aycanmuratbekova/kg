@@ -11,13 +11,14 @@ from .models import *
 class MovieListForCompilationSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(source='movie.id')
     name = serializers.StringRelatedField(source="movie.name")
+    url_name = serializers.StringRelatedField(source="movie.url_name")
     year = serializers.IntegerField(source="movie.year")
     poster = serializers.ImageField(source="movie.poster")
     genre = serializers.CharField(source='movie.genre')
 
     class Meta:
         model = MovieInCompilation
-        fields = ["id", "name", 'year', 'genre', 'poster']
+        fields = ["id", "name", 'url_name', 'year', 'genre', 'poster']
 
 
 class CompilationSerializer(serializers.ModelSerializer):
@@ -25,7 +26,7 @@ class CompilationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Compilation
-        fields = ["id", 'name', "movie_in_compilation"]
+        fields = ["id", 'name', 'url_name', "movie_in_compilation"]
 
 
 class MovieListForPersonSerializer(serializers.ModelSerializer):
@@ -48,6 +49,7 @@ class PersonSerializer(serializers.ModelSerializer):
             "id",
             "first_name",
             "second_name",
+            "url_name",
             "age",
             "profession",
             "bio",
@@ -59,7 +61,7 @@ class PersonSerializer(serializers.ModelSerializer):
 class PersonListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
-        fields = ['first_name', 'second_name']
+        fields = ['first_name', 'second_name', 'url_name']
 
 
 class PersonInMovieSerializer(serializers.ModelSerializer):
@@ -79,6 +81,7 @@ class MovieSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'name',
+            'url_name',
             'duration',
             'year',
             'genre',
