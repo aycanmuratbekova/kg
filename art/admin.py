@@ -3,6 +3,8 @@ from .models import *
 
 
 admin.site.register(Compilation)
+admin.site.register(ProfessionGroup)
+admin.site.register(Profession)
 
 
 @admin.register(Person)
