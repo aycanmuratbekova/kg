@@ -42,6 +42,8 @@ class MovieListForPersonSerializer(serializers.ModelSerializer):
 
 class PersonSerializer(serializers.ModelSerializer):
     movies = MovieListForPersonSerializer(many=True)
+    gender = serializers.CharField(source='get_gender_display')
+    assistant = serializers.CharField(source='get_assistant_display')
 
     class Meta:
         model = Person
@@ -50,8 +52,11 @@ class PersonSerializer(serializers.ModelSerializer):
             "first_name",
             "second_name",
             "url_name",
+            "gender",
             "age",
             "profession",
+            "appearance",
+            "assistant",
             "bio",
             "photo",
             "movies",
