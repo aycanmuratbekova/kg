@@ -1,6 +1,6 @@
 from django.db import models
 from .person import Person
-from .profession import PROFESSIONS
+from .profession import PROFESSIONS, Profession
 
 
 class Movie(models.Model):
@@ -31,10 +31,12 @@ class Movie(models.Model):
 class PersonInMovie(models.Model):
     movie = models.ForeignKey(to=Movie, on_delete=models.SET_NULL, null=True, blank=True, related_name='persons')
     person = models.ForeignKey(to=Person, on_delete=models.SET_NULL, null=True, blank=True, related_name='movies')
-    profession = models.IntegerField(default=5, choices=PROFESSIONS)
+    # profession = models.IntegerField(default=5, choices=PROFESSIONS)
+    profession = models.ForeignKey(to=Profession, on_delete=models.SET_NULL, null=True, blank=True,
+                                   related_name='persons_in_movie')
 
     def __str__(self):
-        return f"{self.get_profession_display()} - {self.person}"
+        return f"{self.person}"
 
     class Meta:
         verbose_name = 'Участник фильма'

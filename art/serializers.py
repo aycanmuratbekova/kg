@@ -33,7 +33,7 @@ class MovieListForPersonSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(source="movie.id")
     movie = serializers.StringRelatedField(many=False)
     year = serializers.IntegerField(source="movie.year")
-    profession = serializers.CharField(source='get_profession_display')
+    profession = serializers.StringRelatedField(many=False)
 
     class Meta:
         model = PersonInMovie
@@ -42,13 +42,15 @@ class MovieListForPersonSerializer(serializers.ModelSerializer):
 
 class ProfessionSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField()
-    profession_group = serializers.StringRelatedField(many=False)
     name = serializers.CharField()
     url_name = serializers.CharField()
+    profession_group_id = serializers.IntegerField(source="profession_group.id")
+    profession_group = serializers.StringRelatedField(many=False)
+    profession_group_url_name = serializers.StringRelatedField(source="profession_group.url_name")
 
     class Meta:
         model = PersonInMovie
-        fields = ["id", "profession_group", 'name', 'url_name']
+        fields = ["id", 'name', 'url_name', "profession_group_id", "profession_group", "profession_group_url_name"]
 
 
 class PersonSerializer(serializers.ModelSerializer):
@@ -84,7 +86,7 @@ class PersonListSerializer(serializers.ModelSerializer):
 
 class PersonInMovieSerializer(serializers.ModelSerializer):
     person = serializers.StringRelatedField(many=False)
-    profession = serializers.CharField(source='get_profession_display')
+    profession = serializers.StringRelatedField(many=False)
 
     class Meta:
         model = PersonInMovie
