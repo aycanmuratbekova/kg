@@ -31,13 +31,15 @@ class CompilationSerializer(serializers.ModelSerializer):
 
 class MovieListForPersonSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(source="movie.id")
-    movie = serializers.StringRelatedField(many=False)
+    # movie = serializers.StringRelatedField(many=False)
+    name = serializers.StringRelatedField(source="movie.name")
+    url_name = serializers.StringRelatedField(source="movie.url_name")
     year = serializers.IntegerField(source="movie.year")
     profession = serializers.StringRelatedField(many=False)
 
     class Meta:
         model = PersonInMovie
-        fields = ["id", "year", 'movie', 'profession']
+        fields = ["id", "year", 'name', 'url_name', 'profession']
 
 
 class ProfessionSerializer(serializers.ModelSerializer):
@@ -105,6 +107,7 @@ class MovieSerializer(serializers.ModelSerializer):
             'duration',
             'year',
             'genre',
+            'rating',
             'pg_rating',
             'description',
             'type',
