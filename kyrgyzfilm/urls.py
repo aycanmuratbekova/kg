@@ -34,11 +34,12 @@ router.register(r'service', ServiceViewSet)
 
 urlpatterns = [
     path('swagger/', schema_view.with_ui()),
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('core/', include("core.urls")),
-    path('', include("art.urls")),
-    path('', include(router.urls)),
-    path('', include("contact_form.urls")),
+    path('api/v1/', include("art.urls")),
+    path('api/v1/', include(router.urls)),
+    path('api/v1/', include("contact_form.urls")),
+    path('', admin.site.urls),
 
 ]
 
