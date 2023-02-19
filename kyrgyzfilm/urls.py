@@ -39,9 +39,11 @@ urlpatterns = [
     path('api/v1/', include("art.urls")),
     path('api/v1/', include(router.urls)),
     path('api/v1/', include("contact_form.urls")),
-    path('', admin.site.urls),
 
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += path('', admin.site.urls),
+
