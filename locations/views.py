@@ -4,6 +4,5 @@ from .serializers import LocationSerializer
 
 
 class LocationViewSet(ModelViewSet):
-    pagination_class = None
     queryset = Location.objects.all()
     serializer_class = LocationSerializer

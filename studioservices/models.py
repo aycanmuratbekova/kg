@@ -6,15 +6,15 @@ class Props(models.Model):
     name = models.CharField(max_length=255, verbose_name="Название реквизита")
     url_name = models.CharField(max_length=255, verbose_name="Название реквизита латиница", unique=True)
     category = models.IntegerField(default=1, choices=CATEGORY, verbose_name="Категория Реквизита")
-    various_props = models.IntegerField(default=10, choices=VARIOUS_PROPS, verbose_name="Вид Разнообразного Реквизита")
+    various_props = models.IntegerField(default=1, choices=VARIOUS_PROPS, verbose_name="Вид Разнообразного Реквизита")
     img = models.ImageField(upload_to='props/%Y/', verbose_name="Фото")
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = "Реквизит"
-        verbose_name_plural = "Реквизиты"
+        verbose_name = "Костюм и реквизит"
+        verbose_name_plural = "Костюмы и реквизиты"
 
 
 class Service(models.Model):

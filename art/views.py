@@ -7,7 +7,6 @@ from .filters import MovieFilter
 
 
 class MovieViewSet(ModelViewSet):
-    pagination_class = None
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
@@ -16,7 +15,6 @@ class MovieViewSet(ModelViewSet):
 
 
 class PersonViewSet(ModelViewSet):
-    pagination_class = None
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
@@ -28,6 +26,5 @@ class PersonViewSet(ModelViewSet):
 
 
 class CompilationViewSet(ModelViewSet):
-    pagination_class = None
     queryset = Compilation.objects.all()
     serializer_class = CompilationSerializer

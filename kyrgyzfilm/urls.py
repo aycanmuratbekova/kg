@@ -6,7 +6,7 @@ from rest_framework import routers
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from news.views import NewsViewSet
-from studioservices.views import PropsViewSet, ServiceViewSet, ServiceCategoryViewSet
+# from studioservices.views import PropsViewSet, ServiceViewSet, ServiceCategoryViewSet
 from locations.views import LocationViewSet
 
 
@@ -25,10 +25,7 @@ schema_view = get_schema_view(
 
 router = routers.DefaultRouter()
 router.register(r'news', NewsViewSet)
-router.register(r'props', PropsViewSet)
 router.register(r'locations', LocationViewSet)
-router.register(r'service-category', ServiceCategoryViewSet)
-router.register(r'service', ServiceViewSet)
 
 
 urlpatterns = [
@@ -38,6 +35,7 @@ urlpatterns = [
     path('api/v1/', include("art.urls")),
     path('api/v1/', include(router.urls)),
     path('api/v1/', include("contact_form.urls")),
+    path('api/v1/', include("studioservices.urls")),
 
 ]
 

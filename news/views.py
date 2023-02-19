@@ -7,7 +7,6 @@ from .ru_date import get_ru_date
 
 
 class NewsViewSet(ModelViewSet):
-    pagination_class = None
     queryset = News.objects.all()
     serializer_class = NewsSerializer
 
