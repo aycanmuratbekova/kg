@@ -2,26 +2,22 @@ from django.contrib import admin
 from .models import *
 
 
-admin.site.register(PropsCategory)
 admin.site.register(Props)
-admin.site.register(ServiceCategory)
 
 
-class ServiceImageAdmin(admin.StackedInline):
+class ServiceImageInline(admin.StackedInline):
     model = ServiceImage
     extra = 1
 
 
+class ServiceCategoryInline(admin.StackedInline):
+    model = ServiceCategory
+    extra = 1
+
+
+@admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
-    inlines = [ServiceImageAdmin]
+    inlines = [ServiceImageInline, ServiceCategoryInline]
 
     class Meta:
         model = Service
-
-
-# admin.site.register(ServiceImage)
-admin.site.register(Service, ServiceAdmin)
-
-
-
-

@@ -133,3 +133,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+# ignore migrations
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
