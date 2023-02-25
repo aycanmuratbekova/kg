@@ -71,3 +71,28 @@ class PavilionImage(models.Model):
     class Meta:
         verbose_name = "Фотография"
         verbose_name_plural = "Фотографии"
+
+
+# Моделька содержит только один экземпляр
+
+class Transport(models.Model):
+    description = models.TextField(verbose_name='Описание')
+
+    def __str__(self):
+        return str(self.id) + "   - Изменить описоние транспорта"
+
+    class Meta:
+        verbose_name = "Транспорт"
+        verbose_name_plural = "Транспорт"
+
+
+class TransportImage(models.Model):
+    transport = models.ForeignKey(Transport, models.CASCADE, 'images', verbose_name="фотографии транспорта")
+    img = models.ImageField(upload_to='transport/%Y/', verbose_name="Фото")
+
+    def __str__(self):
+        return str(self.id)
+
+    class Meta:
+        verbose_name = "Фотография"
+        verbose_name_plural = "Фотографии"

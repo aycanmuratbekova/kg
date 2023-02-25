@@ -12,8 +12,8 @@ class Contact(models.Model):
         return self.email
 
     class Meta:
-        verbose_name = "Свяжитесь с нами"
-        verbose_name_plural = "Свяжитесь с нами"
+        verbose_name = "Прозьбы обратной связи"
+        verbose_name_plural = "Прозьбы обратной связи"
 
 
 class OrderService(models.Model):
@@ -27,5 +27,5 @@ class OrderService(models.Model):
         return self.email
 
     class Meta:
-        verbose_name = "Закажите услугу"
-        verbose_name_plural = "Закажите услуги"
+        verbose_name = "Заказали услугу"
+        verbose_name_plural = "Заказали услугу"
