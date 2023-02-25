@@ -10,7 +10,7 @@ class Person(models.Model):
     age = models.PositiveIntegerField(verbose_name='Возраст', null=True, blank=True)
     appearance = models.CharField(max_length=255, verbose_name='Внешность', null=True, blank=True)
     # profession = models.CharField(max_length=255, verbose_name='Профессия')
-    profession = models.ForeignKey(to=Profession, on_delete=models.SET_NULL, null=True, blank=True, related_name='persons')
+    profession = models.ForeignKey(to=Profession, on_delete=models.CASCADE, related_name='persons')
     assistant = models.IntegerField(default=1, choices=ASSISTANT,  verbose_name='Ассистент')
     bio = models.TextField(verbose_name='Биография')
     photo = models.ImageField(upload_to='person', null=True, blank=False, verbose_name="Фото")

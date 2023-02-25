@@ -14,8 +14,7 @@ class ProfessionGroup(models.Model):
 
 
 class Profession(models.Model):
-    profession_group = models.ForeignKey(to=ProfessionGroup, on_delete=models.SET_NULL, null=True, blank=True,
-                                         related_name='professions')
+    profession_group = models.ForeignKey(to=ProfessionGroup, on_delete=models.CASCADE, related_name='professions')
     name = models.CharField(max_length=255, verbose_name='Профессия')
     url_name = models.CharField(max_length=255, verbose_name='Профессия латиница', unique=True)
 
