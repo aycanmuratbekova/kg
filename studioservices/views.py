@@ -1,23 +1,34 @@
-from rest_framework.viewsets import ModelViewSet
-from .models import *
-from .serializers import *
+from rest_framework import generics
+from rest_framework.response import Response
+
+from .models import Props, Service
+from .serializers import ServiceSerializer, PropsSerializer
 
 
-class PropsCategeroyViewSet(ModelViewSet):
-    queryset = PropsCategory.objects.all()
-    serializer_class = PropsCategorySerializer
+class ServiceListView(generics.ListAPIView):
+    queryset = Service.objects.all()
+    serializer_class = ServiceSerializer
+
+    def list(self, request):
+        queryset = self.get_queryset()
+        serializer = ServiceSerializer(queryset, many=True, context={'request': request})
+        props_serializer = PropsSerializer(Props.objects.all(), many=True)
+
+        return Response({
+            'services': serializer.data,
+            'props': props_serializer.data,
+        })
 
 
-class PropsViewSet(ModelViewSet):
-    queryset = Props.objects.all()
-    serializer_class = PropsSerializer
-
-
-class ServiceViewSet(ModelViewSet):
+class ServiceDetailView(generics.RetrieveAPIView):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
 
 
-class ServiceCategoryViewSet(ModelViewSet):
-    queryset = ServiceCategory.objects.all()
-    serializer_class = ServiceCategorySerializer
+class PropsDetailView(generics.RetrieveAPIView):
+    queryset = Props.objects.all()
+    serializer_class = PropsSerializer
+
+
+
+

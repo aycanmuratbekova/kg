@@ -6,7 +6,7 @@ from rest_framework import routers
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from news.views import NewsViewSet
-from studioservices.views import PropsViewSet, PropsCategeroyViewSet, ServiceViewSet, ServiceCategoryViewSet
+# from studioservices.views import PropsViewSet, ServiceViewSet, ServiceCategoryViewSet
 from locations.views import LocationViewSet
 
 
@@ -25,22 +25,22 @@ schema_view = get_schema_view(
 
 router = routers.DefaultRouter()
 router.register(r'news', NewsViewSet)
-router.register(r'props-category', PropsCategeroyViewSet)
-router.register(r'props', PropsViewSet)
 router.register(r'locations', LocationViewSet)
-router.register(r'service-category', ServiceCategoryViewSet)
-router.register(r'service', ServiceViewSet)
 
 
 urlpatterns = [
     path('swagger/', schema_view.with_ui()),
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('core/', include("core.urls")),
-    path('', include("art.urls")),
-    path('', include(router.urls)),
-    path('', include("contact_form.urls")),
+    path('api/v1/', include("art.urls")),
+    path('api/v1/', include(router.urls)),
+    path('api/v1/', include("contact_form.urls")),
+    path('api/v1/', include("studioservices.urls")),
 
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += path('', admin.site.urls),
+

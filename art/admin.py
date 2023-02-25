@@ -2,8 +2,14 @@ from django.contrib import admin
 from .models import *
 
 
-admin.site.register(Person)
 admin.site.register(Compilation)
+admin.site.register(ProfessionGroup)
+admin.site.register(Profession)
+
+
+@admin.register(Person)
+class CategoryAdmin(admin.ModelAdmin):
+    list_filter = ('first_name', 'second_name', 'gender', 'age', 'profession')
 
 
 class PiMAdmin(admin.StackedInline):

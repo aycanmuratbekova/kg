@@ -12,7 +12,7 @@ class NewsViewSet(ModelViewSet):
 
     def list(self, request):
         queryset = self.get_queryset()
-        serializer = NewsSerializer(queryset, many=True)
+        serializer = NewsSerializer(queryset, many=True, context={'request': request})
 
         for data in serializer.data:
             data['day_month'], data['year'] = get_ru_date(data['news_date'])

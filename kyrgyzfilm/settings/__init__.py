@@ -1,7 +1,7 @@
 DEBUG = True
 
 if DEBUG:
-    from .dev import *
+    from .production import *
 else:
     try:
         from .production import *

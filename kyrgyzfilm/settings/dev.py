@@ -1,7 +1,8 @@
+from decouple import config
+
 from .base import *
 
-
-SECRET_KEY = '00x3jg)l$edpph@24_2pkxermfyb&1=k!m@c6#tgd(j8nza04g'
+SECRET_KEY = config("SECRET_KEY_DEV")
 
 DATABASES = {
     'default': {
