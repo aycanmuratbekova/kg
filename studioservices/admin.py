@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Props, Service, ServiceImage, Pavilion, PavilionImage, Transport, TransportImage
+from .models import Props, Service, ServiceImage, Pavilion, PavilionImage, \
+    Transport, TransportImage, SourceMaterials, SourceMaterialsImage
 
 
 admin.site.register(Props)
@@ -52,3 +53,24 @@ class TransportAdmin(admin.ModelAdmin):
 
     class Meta:
         model = Transport
+
+
+class SourceMaterialsImageInline(admin.StackedInline):
+    model = SourceMaterialsImage
+    extra = 1
+
+
+@admin.register(SourceMaterials)
+class SourceMaterialsAdmin(admin.ModelAdmin):
+    inlines = [SourceMaterialsImageInline, ]
+
+    def has_add_permission(self, request, obj=None):
+        has_permission = True
+        has_source_materials = SourceMaterials.objects.all()
+        if has_source_materials:
+            has_permission = False
+
+        return has_permission
+
+    class Meta:
+        model = SourceMaterials
