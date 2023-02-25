@@ -1,7 +1,7 @@
 from rest_framework import generics
 from rest_framework.response import Response
 
-from .models import Props, Service, ServiceCategory
+from .models import Props, Service
 from .serializers import ServiceSerializer, PropsSerializer
 
 

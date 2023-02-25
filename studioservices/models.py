@@ -1,5 +1,5 @@
 from django.db import models
-from .categories import CATEGORY, VARIOUS_PROPS
+from .categories import CATEGORY, VARIOUS_PROPS, SERVICE_CATEGORY
 
 
 class Props(models.Model):
@@ -18,8 +18,10 @@ class Props(models.Model):
 
 
 class Service(models.Model):
+    category = models.IntegerField(default=1, choices=SERVICE_CATEGORY, verbose_name="Категория Реквизита")
     name = models.CharField(max_length=255, verbose_name="Название сервиса-услуги")
     url_name = models.CharField(max_length=255, verbose_name="Название сервиса-услуги латиница", unique=True)
+    description = models.TextField(verbose_name='Описание')
 
     def __str__(self):
         return self.name
@@ -29,24 +31,39 @@ class Service(models.Model):
         verbose_name_plural = "Сервисы-Услуги"
 
 
-class ServiceCategory(models.Model):
-    service = models.ForeignKey(Service, models.SET_NULL, 'service_categories', null=True, blank=True,
-                                verbose_name="Сервис-Услуга")
-    name = models.CharField(max_length=255, verbose_name="Название подкатегории сервиса")
-    url_name = models.CharField(max_length=255, verbose_name="Название подкатегории сервиса латиница", unique=True)
+class ServiceImage(models.Model):
+    service = models.ForeignKey(Service, models.SET_NULL, 'images', null=True, blank=True,
+                                verbose_name="фотографии сервиса")
+    img = models.ImageField(upload_to='service/%Y/', verbose_name="Фото")
+    name = models.CharField(max_length=255, verbose_name="Название картинки", null=True, blank=True)
+
+    def __str__(self):
+        return str(self.id)
+
+    class Meta:
+        verbose_name = "Фотография"
+        verbose_name_plural = "Фотографии"
+
+
+class Pavilion(models.Model):
+    name = models.CharField(max_length=255, verbose_name="Название павильона")
+    url_name = models.CharField(max_length=255, verbose_name="Название павильона латиница", unique=True)
+    dimensions = models.CharField(max_length=255, verbose_name='Габариты павильона')
+    electrical_connection = models.TextField(verbose_name='Электрподключение')
+    options = models.TextField(verbose_name='Опции')
+    infrastructure = models.TextField(verbose_name='Инфраструктура')
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = "Подкатегория сервиса"
-        verbose_name_plural = "Подкаатегории сервиса"
+        verbose_name = "Павильон"
+        verbose_name_plural = "Павильоны"
 
 
-class ServiceImage(models.Model):
-    service = models.ForeignKey(Service, models.SET_NULL, 'images', null=True, blank=True,
-                                verbose_name="фотографии сервиса")
-    img = models.ImageField(upload_to='props/%Y/', verbose_name="Фото")
+class PavilionImage(models.Model):
+    pavilion = models.ForeignKey(Pavilion, models.CASCADE, 'images', verbose_name="фотографии павильона")
+    img = models.ImageField(upload_to='pavilion/%Y/', verbose_name="Фото")
 
     def __str__(self):
         return str(self.id)

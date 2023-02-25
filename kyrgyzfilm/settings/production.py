@@ -16,4 +16,4 @@ DATABASES = {
     }
 }
 
-ALLOWED_HOSTS = ["localhost", "192.168.0.1", "admin.kyrgyzfilm.kg", "test.kyrgyzfilm.kg", "dev.kyrgyzfilm.kg"]
+ALLOWED_HOSTS = ["localhost", "192.168.0.1", "admin.kyrgyzfilm.kg", "test.kyrgyzfilm.kg", "164.92.135.142"]

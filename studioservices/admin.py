@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from .models import Props, Service, ServiceImage, Pavilion, PavilionImage
 
 
 admin.site.register(Props)
@@ -10,14 +10,24 @@ class ServiceImageInline(admin.StackedInline):
     extra = 1
 
 
-class ServiceCategoryInline(admin.StackedInline):
-    model = ServiceCategory
-    extra = 1
-
-
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
-    inlines = [ServiceImageInline, ServiceCategoryInline]
+    inlines = [ServiceImageInline, ]
 
     class Meta:
         model = Service
+
+
+# New Table
+
+class PavilionImageInline(admin.StackedInline):
+    model = PavilionImage
+    extra = 1
+
+
+@admin.register(Pavilion)
+class PavilionAdmin(admin.ModelAdmin):
+    inlines = [PavilionImageInline, ]
+
+    class Meta:
+        model = Pavilion

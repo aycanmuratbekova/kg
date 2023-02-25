@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Service, Props, ServiceImage, ServiceCategory
+from .models import Service, Props, ServiceImage
 
 
 class PropsSerializer(serializers.ModelSerializer):
@@ -17,21 +17,12 @@ class ServiceImageSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ServiceCategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ServiceCategory
-        fields = "__all__"
-
-
 class ServiceSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
-        print(f"\nself = {self}\n")
         services = super(ServiceSerializer, self).to_representation(instance)
         if instance.images.exists():
             services['images'] = ServiceImageSerializer(instance.images.all(), many=True, context={'request': self.context.get('request')}).data
-        if instance.images.exists():
-            services['service_categories'] = ServiceCategorySerializer(instance.service_categories.all(), many=True).data
         return services
 
     class Meta:
