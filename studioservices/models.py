@@ -73,7 +73,8 @@ class PavilionImage(models.Model):
         verbose_name_plural = "Фотографии"
 
 
-# Transport и SourceMaterials модельки содержат только один экземпляр
+""" Transport и SourceMaterials модельки содержат только один экземпляр"""
+
 
 class Transport(models.Model):
     description = models.TextField(verbose_name='Описание')
@@ -89,6 +90,7 @@ class Transport(models.Model):
 class TransportImage(models.Model):
     transport = models.ForeignKey(Transport, models.CASCADE, 'images', verbose_name="фотографии транспорта")
     img = models.ImageField(upload_to='transport/%Y/', verbose_name="Фото")
+    name = models.CharField(max_length=255, verbose_name="Название картинки", null=True, blank=True)
 
     def __str__(self):
         return str(self.id)
@@ -110,9 +112,10 @@ class SourceMaterials(models.Model):
 
 
 class SourceMaterialsImage(models.Model):
-    transport = models.ForeignKey(SourceMaterials, models.CASCADE, 'images',
-                                  verbose_name="фотографии исходных материалов")
+    source_materials = models.ForeignKey(SourceMaterials, models.CASCADE, 'images',
+                                         verbose_name="фотографии исходных материалов")
     img = models.ImageField(upload_to='source_materials/%Y/', verbose_name="Фото")
+    name = models.CharField(max_length=255, verbose_name="Название картинки", null=True, blank=True)
 
     def __str__(self):
         return str(self.id)
