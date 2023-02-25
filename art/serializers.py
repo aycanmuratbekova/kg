@@ -2,12 +2,6 @@ from rest_framework import serializers
 from .models import *
 
 
-# class MovieListSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Movie
-#         fields = ["name", "poster", "year", "genre"]
-
-
 class MovieListForCompilationSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(source='movie.id')
     name = serializers.StringRelatedField(source="movie.name")
