@@ -10,7 +10,7 @@ class Compilation(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "Подбока"
+        verbose_name = "Подбоку"
         verbose_name_plural = "Подборки"
 
 

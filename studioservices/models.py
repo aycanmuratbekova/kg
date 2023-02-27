@@ -13,7 +13,7 @@ class Props(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "Костюм и реквизит"
+        verbose_name = "Костюм или Реквизит"
         verbose_name_plural = "Костюмы и реквизиты"
 
 
@@ -27,7 +27,7 @@ class Service(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "Сервис-Услуга"
+        verbose_name = "Сервис-Услугу"
         verbose_name_plural = "Сервисы-Услуги"
 
 
@@ -80,7 +80,7 @@ class Transport(models.Model):
     description = models.TextField(verbose_name='Описание')
 
     def __str__(self):
-        return str(self.id) + "   - Изменить описоние транспорта"
+        return str(self.id) + "   - Изменить описание транспорта"
 
     class Meta:
         verbose_name = "Транспорт"
@@ -104,7 +104,7 @@ class SourceMaterials(models.Model):
     description = models.TextField(verbose_name='Описание')
 
     def __str__(self):
-        return str(self.id) + "   - Изменить описоние исходных материалов"
+        return str(self.id) + "   - Изменить описание исходных материалов"
 
     class Meta:
         verbose_name = "Исходные материалы"
