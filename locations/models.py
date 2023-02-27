@@ -13,7 +13,7 @@ class Location(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "Локация"
+        verbose_name = "Локацию"
         verbose_name_plural = "Локации"
         ordering = ["id"]
 

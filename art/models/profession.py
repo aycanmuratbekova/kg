@@ -9,7 +9,7 @@ class ProfessionGroup(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Группа Профессии'
+        verbose_name = 'Группу Профессий'
         verbose_name_plural = 'Группы Профессий'
 
 
@@ -22,7 +22,7 @@ class Profession(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Профессия'
+        verbose_name = 'Профессию'
         verbose_name_plural = 'Профессии'
 
 

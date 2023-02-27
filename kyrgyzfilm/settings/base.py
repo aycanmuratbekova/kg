@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from decouple import config
@@ -98,10 +99,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static'
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'staticfiles'), )
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -119,6 +122,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://localhost:3000",
     "https://127.0.0.1:3000",
     "https://kyrgyz-film.vercel.app",
+    "https://kyrgyzfilm.kg",
 ]
 
 CORS_ALLOW_METHODS = [
@@ -141,3 +145,37 @@ EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+
+
+JAZZMIN_SETTINGS = {
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "Кыргыз Фильм Админ",
+
+    # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_header": "kg-logo",
+
+    # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_brand": "Кыргыз Фильм",
+
+    # Logo to use for your site, must be present in static files, used for brand on top left
+    "site_logo": "logo/logo.png",
+
+    # CSS classes that are applied to the logo above
+    "site_logo_classes": "img-rectangle",
+
+    # Welcome text on the login screen
+    "welcome_sign": "Добро пожаловать в Кыргыз Фильм Админ",
+
+    # Copyright on the footer
+    "copyright": "kyrgyzfilmstudio.kg",
+
+    # Field name on user model that contains avatar ImageField/URLField/Charfield or a callable that receives the user
+    "user_avatar": 'kyrgyz-film-admin',
+
+
+    # Hide these models when generating side menu (e.g auth.user)
+    "hide_models": ["auth.group"],
+
+    # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
+    "order_with_respect_to": ["art.ProfessionGroup", "art.Profession"],
+}

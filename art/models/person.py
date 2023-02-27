@@ -19,5 +19,5 @@ class Person(models.Model):
         return f"{self.first_name} {self.second_name}"
 
     class Meta:
-        verbose_name = 'Деятель искусства'
+        verbose_name = 'Деятеля искусства'
         verbose_name_plural = 'Деятели искусства'
